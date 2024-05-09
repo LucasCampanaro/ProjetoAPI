@@ -1,0 +1,23 @@
+<h3>Buscar pessoa</h3>
+<div>
+  <input type="search" [(ngModel)]="valorBuscaPessoa"
+  (keyup.enter)="obterPessoaEspecifica()">
+</div>
+<p> Cliente: {{ (pessoaEncontrada$ | async)?.nome }} </p>
+
+<h3>Novo Cliente</h3>
+<div>
+  <input type="text" [(ngModel)]="nomeAdicionar" (keyup.enter)="adicionarPessoa()">
+</div>
+
+<h3>Lista de Clientes Cadastrados</h3>
+<span *ngFor="let pessoa of pessoas$ | async"
+(click)="obterDadosAtualizar(pessoa)">
+  {{ pessoa.nome }}, 
+</span>
+
+<h3> Atualizar Nome </h3>
+<input type="text"
+[(ngModel)]="nomeAtualizar"
+(keyup.enter)="atualizarNome()"
+>
